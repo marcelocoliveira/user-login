@@ -1,0 +1,6 @@
+lib-cov
+lib/config/config.js
+
+node_modules
+npm-debug.log
+traces.log
