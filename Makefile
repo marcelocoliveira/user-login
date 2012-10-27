@@ -11,11 +11,11 @@ test-w:
 # 		--bail \
 # 		test/acceptance/*.js
 
-test-cov: lib-cov
+test-cov: app-cov
 	@APP_COV=1 $(MAKE) test REPORTER=html-cov > public/coverage.html
 
-lib-cov:
-	@jscoverage lib lib-cov
+app-cov:
+	@jscoverage app app-cov
 
 .PHONY: test test-w
 
@@ -29,6 +29,6 @@ lib-cov:
 
 # clean:
 # 	rm -f coverage.html
-# 	rm -fr lib-cov
+# 	rm -fr app-cov
 
 # .PHONY: test test-unit test-acceptance benchmark clean

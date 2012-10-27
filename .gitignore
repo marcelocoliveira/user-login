@@ -1,7 +1,9 @@
-lib-cov
-lib/config/config.js
+app-cov
+app/config/config.js
 
 .DS_Store
 node_modules
 npm-debug.log
 traces.log
+
+public/coverage.html

@@ -26,4 +26,15 @@ describe('routes', function(){
         });
     });
   });
+  // test the fail route
+  describe('#failftw', function() {
+    it('should return 500', function(done) {
+      request(app)
+        .get('/failftw')
+        .end(function(err, res){
+          res.should.have.status(500);
+          done();
+        });
+    });
+  });
 });

@@ -6,8 +6,12 @@
 var express = require('express')
   , routes = require('./routes')
   , http = require('http')
+  , mongoose = require('mongoose')
   , RedisStore = require("connect-redis")(express)
-  , config = require('./').config;
+  , config = require('./').config
+  , loggerStream = require('./').loggerStream;
+
+mongoose.connect('mongodb://'+config.mongodb.user + ':'+ config.mongodb.password+'@'+config.mongodb.host+':'+config.mongodb.port +'/'+config.mongodb.database);
 
 var app = module.exports = express();
 
@@ -16,7 +20,9 @@ app.configure(function(){
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
   app.use(express.favicon());
-  app.use(express.logger('dev'));
+
+  //use winston to pass messages to loggly
+  app.use(express.logger({stream:loggerStream}));
   app.use(express.bodyParser());
   app.use(express.methodOverride());
 
@@ -100,11 +106,22 @@ app.configure(function(){
   });
 });
 
-app.configure('development', function(){
+app.configure('development', function() {
+  app.use(express.errorHandler({
+    dumpExceptions: true,
+    showStack: true
+  }));
+  app.locals.pretty = true;
+  app.enable('verbose errors');
+});
+
+app.configure('production', function() {
   app.use(express.errorHandler());
+  app.disable('verbose errors');
 });
 
 app.get('/', routes.index);
+app.get('/failftw', routes.failftw);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));

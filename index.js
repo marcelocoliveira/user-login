@@ -1,3 +1,4 @@
+//This is needed for coverage testing
 module.exports = process.env.APP_COV
-  ? require('./lib-cov/consolidation')
-  : require('./lib/consolidation')
+  ? require('./app-cov/consolidation')
+  : require('./app/consolidation')
