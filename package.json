@@ -9,8 +9,9 @@
   "dependencies": {
     "express": "3.0.x",
     "jade": "*",
-    "should": "1.2.x",
     "mocha": "1.6.x",
+    "should": "1.2.x",
+    "supertest": "0.4.x",
     "connect-redis": "1.4.x"
   }
 }
