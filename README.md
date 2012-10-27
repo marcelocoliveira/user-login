@@ -44,7 +44,7 @@ Security :
 Test / Quality : 
 -----------------
 - Mocha (integration/unit tests)
-- expect.js (assertions framework) 
+- should (assertions framework) 
 - jscoverage (code coverage)
 
 Database :

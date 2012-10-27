@@ -7,9 +7,10 @@
     "test": "make test"
   },
   "dependencies": {
-    "express": "3.0.0beta6",
+    "express": "3.0.x",
     "jade": "*",
-    "expect.js": "0.2.0",
-    "mocha": "1.6.0"
+    "should": "1.2.x",
+    "mocha": "1.6.x",
+    "connect-redis": "1.4.x"
   }
 }
