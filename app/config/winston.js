@@ -1,7 +1,8 @@
 //Logging config
 
-var winston = require('winston');
-var config = require('./config');
+var winston = require('winston')
+  , env = process.env.NODE_ENV || 'development'
+  , config = require('./config')[env]
 
 //use a log file
 // var logger = new (winston.Logger)({

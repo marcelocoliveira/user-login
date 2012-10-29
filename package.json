@@ -15,6 +15,7 @@
     "connect-redis": "1.4.x",
     "mongoose": "3.0.x",
     "winston": "0.6.x",
-    "winston-loggly": "0.6.x"
+    "winston-loggly": "0.6.x",
+    "airbrake": "0.2.x"
   }
 }

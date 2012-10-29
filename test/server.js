@@ -52,10 +52,17 @@ describe('sessions', function(){
   });
 });
 
-describe('in development', function(){
-  it('should enable "view cache"', function(){
-    process.env.NODE_ENV = 'development';
-    app.enabled('view cache').should.be.false;
-    process.env.NODE_ENV = 'test';
-  })
-});
+// describe('in development', function(){
+//   // it('should enable "view cache"', function(){
+//   //   process.env.NODE_ENV = 'development';
+//   //   app.enabled('view cache').should.be.false;
+//   //   process.env.NODE_ENV = 'test';
+//   // }),
+//   // This doesn't work because the variable is only being 
+//   // changed now. Would need to change it before instantiating app
+//   it('should enable verbose errors', function(){
+//     process.env.NODE_ENV = 'development';
+//     app.enabled('verbose errors').should.be.true;
+//     process.env.NODE_ENV = 'test';
+//   })
+// });

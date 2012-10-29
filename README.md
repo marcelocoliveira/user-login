@@ -34,6 +34,7 @@ Communication / Network :
 Log :
 -----
 - Winston (logger)
+- Airbrake (there is an issue with the npm module - need to manually clone)
 
 Security :
 ----------

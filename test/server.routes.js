@@ -6,7 +6,7 @@ var app = require('../app')
 describe('routes', function(){
   it('should serve static files', function(done){
     request(app)
-      .get('/coverage.html')
+      .get('/images/404.jpeg')
       .expect(200, done);
   })
   it('should fail on bad routes', function(done){
