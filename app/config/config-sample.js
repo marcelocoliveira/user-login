@@ -13,15 +13,16 @@ module.exports = {
 			}
 			//loggly is a cloud service to make handling log files easier
 			//particularly across multiple servers
-		,	loggly: {
-					subdomain: "REPLACE WITH LOGGLY SUBDOMAIN"
-			  , inputToken: "REPLACE WITH LOGGLY INPUT TOKEN"
-			  , auth: {
-				      username: "REPLACE WITH LOGGLY USERNAME"
-				    , password: "REPLACE WITH LOGGLY PASSWORD"
-			    }
-			  , json: true
-			}
+			// logging will work locally unless you want to uncomment
+		// ,	loggly: {
+		// 			subdomain: "REPLACE WITH LOGGLY SUBDOMAIN"
+		// 	  , inputToken: "REPLACE WITH LOGGLY INPUT TOKEN"
+		// 	  , auth: {
+		// 		      username: "REPLACE WITH LOGGLY USERNAME"
+		// 		    , password: "REPLACE WITH LOGGLY PASSWORD"
+		// 	    }
+		// 	  , json: true
+		// 	}
 			//airbrake is a cloud service for tracking errors
 		,	airbrake: {
 				apiKey: "REPLACE WITH AIRBRAKE API KEY"

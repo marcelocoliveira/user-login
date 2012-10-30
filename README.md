@@ -34,6 +34,7 @@ Communication / Network :
 Log :
 -----
 - Winston (logger)
+- Loggly - optional logging to loggly
 - Airbrake (there is an issue with the npm module - need to manually clone)
 
 Security :

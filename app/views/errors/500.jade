@@ -1,0 +1,14 @@
+extends ../layouts/default
+
+block content
+  h1 Oops something went wrong
+  br
+
+  - if(typeof(error) != 'undefined')
+    #error-message-box
+    #error-stack-trace
+      pre
+        code!= error.stack	
+      //- - if(showStack)
+        pre
+          code!= error.stack
