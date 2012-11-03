@@ -2,7 +2,7 @@
 
 var winston = require('winston')
   , env = process.env.NODE_ENV || 'development'
-  , config = require('./config')[env]
+  , config = require('../config/config')[env]
 
 
 if(typeof(config.loggly)!='undefined') {
@@ -18,6 +18,7 @@ if(typeof(config.loggly)!='undefined') {
     json: config.loggly.json
   };
   winston.add(winston.transports.Loggly, options);
+  exports.logger = winston;
 }
 else{
   //use a log file
@@ -26,6 +27,7 @@ else{
       new (winston.transports.File)({ filename: 'traces.log', level: 'info', json:true })
     ]
   });
+  exports.logger = logger;
 }
 
 // enable web server logging; pipe those log messages through winston
@@ -35,6 +37,4 @@ var winstonStream = {
     }
 };
 
-
-exports.logger = winston;
 exports.loggerStream = winstonStream;

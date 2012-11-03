@@ -1,5 +1,6 @@
-extends layouts/default
+extends includes/default
 
 block content
   h1= appName
   p Welcome to #{appName}
+  p= isAuthenticated()

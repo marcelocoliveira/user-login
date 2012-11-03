@@ -16,6 +16,14 @@
     "mongoose": "3.0.x",
     "winston": "0.6.x",
     "winston-loggly": "0.6.x",
-    "airbrake": "0.2.x"
+    "airbrake": "0.2.x",
+    "passport": "0.1.12",
+    "passport-local": "0.1.x",
+    "connect-flash": "0.1.x",
+    "bcrypt": ">0.5.x",
+    "nodemailer": "0.3.x",
+    "validator": "0.4.x",
+    "email-templates": "0.0.x",
+    "uuid-js": "*"
   }
 }

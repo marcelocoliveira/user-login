@@ -1,0 +1,16 @@
+extends auth
+
+block auth
+
+  form.login.form-horizontal(action="/signup/resendActivation", method="post")
+    input(type='hidden', name='_csrf', value=token)
+    .control-group
+      label.control-label(for='email') Email
+      .controls
+        input#email(type='text', name="email", placeholder='Email')
+
+    .form-actions
+      button.btn.btn-primary(type='submit') Resend
+      &nbsp;
+      | or&nbsp;
+      a.show-signup(href="/login") cancel

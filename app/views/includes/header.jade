@@ -1,0 +1,25 @@
+
+header#header
+  .navbar.navbar-inverse.navbar-fixed-top(role='navigation')
+    .navbar-inner
+      .container
+        a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.brand(href='/') #{appName}
+        .nav-collapse.collapse
+          ul.nav
+            //- li
+            //-   a(href='/schedules', title="Your Schedules") Schedules
+            //- li
+            //-   a(href="/schedules/new", title="New Schedule") New
+          ul.nav.pull-right
+            if (isAuthenticated())
+              li
+                a(href="/users/"+user.username, title="Profile") Profile
+              li
+                a(href="/logout", title="logout") Logout
+            else
+              li
+                a(href="/login", title="Login") Login

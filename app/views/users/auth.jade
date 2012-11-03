@@ -1,0 +1,24 @@
+extends ../includes/default
+
+block main
+  h1= title
+
+block content
+  .row
+    .offset1.span5
+      a(href="/auth/facebook")
+        img(src="/img/facebook.png")
+      a(href="/auth/google")
+        img(src="/img/google.png")
+    .span6
+      if (typeof message !== 'undefined' && message.length > 0)
+        .fade.in.alert.alert-block.alert-error
+          a.close(data-dismiss="alert", href="javascript:void(0)") x
+          ul
+            if typeof message === 'string'
+              li!= message
+            else
+              each item in message
+                li!= item
+
+      block auth

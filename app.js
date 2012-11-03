@@ -13,10 +13,15 @@ var express = require('express')
   , logger = require('./').logger
   , airbrake = require('airbrake').createClient(config.airbrake.apiKey)
   , errors = require('./').errors
+  , passport = require("passport")
+  , flash = require("connect-flash")
   ;
 
 var mongodbURI = 'mongodb://'+config.mongodb.user + ':'+ config.mongodb.password+'@'+config.mongodb.host+':'+config.mongodb.port +'/'+config.mongodb.database;
 mongoose.connect(mongodbURI);
+
+// bootstrap passport config
+require('./').passport.boot(passport, config)
 
 var app = module.exports = express();
 
@@ -45,13 +50,18 @@ app.configure(function(){
     secret:config.redis.secret 
   }));
 
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
+
   //Configure dynamic helpers
   app.use(function (req, res, next) { 
     res.locals({
         appName: config.appName
-      // , token: req.session._csrf
-      // , flash: req.session.flash
-      // , isAuthenticated: req.isAuthenticated
+      , token: req.session._csrf
+      , formData: req.session.formData
+      , flash: req.session.flash
+      , isAuthenticated: req.isAuthenticated
       // , get user() {
       //   return req.user;
       // }
@@ -61,6 +71,11 @@ app.configure(function(){
     // app.locals.message = {};
     next()
   })
+
+  //csrf protection
+  if(env !== "test"){
+    app.use(express.csrf());
+  }
 
   app.use(app.router);
 
@@ -118,7 +133,7 @@ app.configure(function(){
 });
 
 // Bootstrap routes
-require('./routes/routes')(app)
+require('./routes/routes')(app, passport)
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on "+config.node.host + ":" + app.get('port'));
